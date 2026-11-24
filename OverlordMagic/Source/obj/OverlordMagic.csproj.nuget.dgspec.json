@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\OverlordMagic.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\OverlordMagic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\OverlordMagic.csproj",
+        "projectName": "OverlordMagic",
+        "projectPath": "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\OverlordMagic.csproj",
+        "packagesPath": "C:\\Users\\jackp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jackp\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "framework": "net48",
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "11.0.100"
+      },
+      "frameworks": {
+        "net48": {
+          "framework": "net48",
+          "targetAlias": "net48",
+          "dependencies": {
+            "Lib.Harmony": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[2.3.3, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\11.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

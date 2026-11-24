@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Adds the spell-casting component to humans. No Harmony required: the component supplies the gizmo. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="Human"]/comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="Human"]/comps</xpath>
+      <value>
+        <li Class="OverlordMagic.CompProperties_SpellCaster" />
+      </value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="Human"]</xpath>
+      <value>
+        <comps>
+          <li Class="OverlordMagic.CompProperties_SpellCaster" />
+        </comps>
+      </value>
+    </nomatch>
+  </Operation>
+</Patch>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The incantation: runs only while time moves; any other order cancels it and the spell never goes off. -->
+  <JobDef>
+    <defName>OM_CastSpell</defName>
+    <driverClass>OverlordMagic.JobDriver_CastSpell</driverClass>
+    <reportString>casting a spell.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- AI for charmed animals and mechanoids (which the player cannot order directly):
+       fight enemies, otherwise follow the pawn that charmed them. -->
+  <DutyDef>
+    <defName>OM_CharmedFight</defName>
+    <hook>MediumPriority</hook>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="JobGiver_AIFightEnemies" />
+        <li Class="JobGiver_AIFollowEscortee" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+</Defs>

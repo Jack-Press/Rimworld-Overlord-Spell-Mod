@@ -1,0 +1,5 @@
+C:\Users\jackp\OneDrive\Documents\Github Projects\ModTesting\test05\OverlordMagic\1.6\Assemblies\OverlordMagic.dll
+C:\Users\jackp\OneDrive\Documents\Github Projects\ModTesting\test05\OverlordMagic\Source\obj\Release\OverlordMagic.csproj.AssemblyReference.cache
+C:\Users\jackp\OneDrive\Documents\Github Projects\ModTesting\test05\OverlordMagic\Source\obj\Release\OverlordMagic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jackp\OneDrive\Documents\Github Projects\ModTesting\test05\OverlordMagic\Source\obj\Release\OverlordMagic.csproj.CoreCompileInputs.cache
+C:\Users\jackp\OneDrive\Documents\Github Projects\ModTesting\test05\OverlordMagic\Source\obj\Release\OverlordMagic.dll

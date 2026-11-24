@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Game-version-independent content lives in Common (Defs, Patches, Textures).
+     Only the compiled DLL is version-specific, so a 1.7 build only needs a new 1.7/Assemblies folder
+     and a new <v1.7> block here. -->
+<loadFolders>
+  <v1.6>
+    <li>Common</li>
+    <li>1.6</li>
+  </v1.6>
+  <default>
+    <li>Common</li>
+    <li>1.6</li>
+  </default>
+</loadFolders>

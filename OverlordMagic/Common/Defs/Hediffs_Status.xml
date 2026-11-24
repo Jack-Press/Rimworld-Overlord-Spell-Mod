@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Status / buff -->
+  <HediffDef>
+    <defName>OM_Haste</defName>
+    <label>haste</label>
+    <description>Magically sped up. Moves and works faster.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0.6, 0.9, 1.0)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1500~1500</disappearsAfterTicks>
+      </li>
+      <li Class="OverlordMagic.HediffCompProperties_ShowTimer" />
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>2</MoveSpeed>
+          <WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+        </statOffsets>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="OverlordMagic.DefModExt_Temporary" />
+    </modExtensions>
+  </HediffDef>
+
+  <!-- Status / debuff: cannot move or act, but stays standing -->
+  <HediffDef>
+    <defName>OM_Paralysis</defName>
+    <label>paralyzed</label>
+    <description>Frozen in place by magic. Cannot move or act.</description>
+    <hediffClass>OverlordMagic.Hediff_Frozen</hediffClass>
+    <isBad>true</isBad>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>600~600</disappearsAfterTicks>
+      </li>
+      <li Class="OverlordMagic.HediffCompProperties_ShowTimer" />
+    </comps>
+    <modExtensions>
+      <li Class="OverlordMagic.DefModExt_Temporary" />
+    </modExtensions>
+  </HediffDef>
+
+  <!-- Status / debuff applied by Time Stop. Marker only: the freezing is done by the mod's time-stop code,
+       and the hediff removes itself when time resumes. -->
+  <HediffDef>
+    <defName>OM_TimeStop</defName>
+    <label>frozen in time</label>
+    <description>Caught in a stopped moment. Cannot move or act until time resumes.</description>
+    <hediffClass>OverlordMagic.Hediff_TimeStopped</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.7, 0.7, 1.0)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <modExtensions>
+      <li Class="OverlordMagic.DefModExt_Temporary" />
+    </modExtensions>
+  </HediffDef>
+
+  <!-- Status / control: faction is swapped to the caster's for the duration -->
+  <HediffDef>
+    <defName>OM_Charm</defName>
+    <label>charmed</label>
+    <description>Regards the caster as a best friend and fights on their side. Starts out drafted. Ends early if the caster's side hurts them.</description>
+    <hediffClass>OverlordMagic.Hediff_Charm</hediffClass>
+    <isBad>false</isBad>
+    <defaultLabelColor>(1.0, 0.6, 0.8)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>5000~5000</disappearsAfterTicks>
+      </li>
+      <li Class="OverlordMagic.HediffCompProperties_ShowTimer" />
+    </comps>
+    <modExtensions>
+      <li Class="OverlordMagic.DefModExt_Temporary" />
+    </modExtensions>
+  </HediffDef>
+
+  <!-- Left unconscious after being raised from the dead. Lost if the pawn dies. -->
+  <HediffDef>
+    <defName>OM_ReviveStupor</defName>
+    <label>revival stupor</label>
+    <description>Just returned from death. Unconscious until the shock wears off.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <defaultLabelColor>(0.8, 0.8, 0.9)</defaultLabelColor>
+    <initialSeverity>1</initialSeverity>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3000~3000</disappearsAfterTicks>
+      </li>
+      <li Class="OverlordMagic.HediffCompProperties_ShowTimer" />
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.01</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="OverlordMagic.DefModExt_Temporary" />
+    </modExtensions>
+  </HediffDef>
+
+</Defs>

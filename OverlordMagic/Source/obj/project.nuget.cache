@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "77IiLm11o2E=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jackp\\OneDrive\\Documents\\Github Projects\\ModTesting\\test05\\OverlordMagic\\Source\\OverlordMagic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jackp\\.nuget\\packages\\lib.harmony\\2.3.3\\lib.harmony.2.3.3.nupkg.sha512",
+    "C:\\Users\\jackp\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\jackp\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

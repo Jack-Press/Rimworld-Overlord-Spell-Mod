@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Overlord Magic (Test Build)</name>
+  <author>Your Name</author>
+  <packageId>yourname.overlordmagic</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Test build of a tiered magic system. Player-controlled colonists get a "Cast spell" button with 13 sample spells covering every cast type and effect type: damage, heal, summon (beings, objects, self-teleport), creation, and status (buff, debuff, control).
+
+No mana cost and no requirements in this build. No DLC needed. Requires the Harmony mod.
+
+Spells are plain XML (SpellDef), so new ones can be added without touching code.</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+</ModMetaData>

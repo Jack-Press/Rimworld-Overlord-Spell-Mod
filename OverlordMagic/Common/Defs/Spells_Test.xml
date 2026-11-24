@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Test spells: one or more per (cast type x effect type) combination.
+    tier / mpCost come from the spell spreadsheet (Est. MP). damageModifier is the spreadsheet's
+    damage modifier. Effect "amount" values are the damage / healing of an average spell of that
+    tier at modifier 1.0; the modifier scales them at cast time.
+    mpCost and requirements are stored but not enforced in this build.
+  -->
+
+  <!-- ===================== PROJECTILE + DAMAGE ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_MagicArrow</defName>
+    <label>Magic Arrow</label>
+    <description>Fires a bolt of mana toward the aimed point.</description>
+    <tier>1</tier>
+    <mpCost>10</mpCost>
+    <damageModifier>1</damageModifier>
+    <castType>Projectile</castType>
+    <targetKind>Any</targetKind>
+    <range>40</range>
+    <projectileDef>OM_Proj_MagicArrow</projectileDef>
+    <effects>
+      <li Class="OverlordMagic.Effect_Damage">
+        <damageDef>Stab</damageDef>
+        <amount>10</amount>
+        <armorPenetration>0.3</armorPenetration>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== PROJECTILE + DAMAGE + CREATION ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_Fireball</defName>
+    <label>Fireball</label>
+    <description>A ball of fire that bursts where it lands: burns everything in the blast and leaves flames behind.</description>
+    <tier>3</tier>
+    <mpCost>40</mpCost>
+    <damageModifier>1</damageModifier>
+    <castType>Projectile</castType>
+    <targetKind>Any</targetKind>
+    <range>35</range>
+    <projectileDef>OM_Proj_Fireball</projectileDef>
+    <effects>
+      <li Class="OverlordMagic.Effect_Damage">
+        <damageDef>Flame</damageDef>
+        <amount>18</amount>
+        <radius>3</radius>
+        <flashScale>3</flashScale>
+      </li>
+      <li Class="OverlordMagic.Effect_Creation">
+        <thingDef>Fire</thingDef>
+        <shape>Radial</shape>
+        <radius>2.5</radius>
+        <chance>0.35</chance>
+        <fireSize>0.3</fireSize>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + DAMAGE (single target) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_ShockWave</defName>
+    <label>Shock Wave</label>
+    <description>An invisible shock wave bursts at the chosen point, battering every creature near it (not the caster or their allies).</description>
+    <tier>2</tier>
+    <mpCost>25</mpCost>
+    <damageModifier>1.5</damageModifier>
+    <castType>Target</castType>
+    <targetKind>Any</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Damage">
+        <damageDef>Blunt</damageDef>
+        <amount>12</amount>
+        <radius>2.5</radius>
+        <affectCaster>false</affectCaster>
+        <affectAllies>false</affectAllies>
+        <affectEnemies>true</affectEnemies>
+        <affectNeutral>true</affectNeutral>
+        <flashScale>3</flashScale>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET (caster-centered) + DAMAGE (instant death) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_CryOfTheBanshee</defName>
+    <label>Cry of the Banshee</label>
+    <description>A death-wail kills every living creature around the caster, except the caster and their allies.</description>
+    <tier>7</tier>
+    <mpCost>640</mpCost>
+    <damageModifier>1</damageModifier>
+    <castType>Target</castType>
+    <targetKind>Self</targetKind>
+    <effects>
+      <li Class="OverlordMagic.Effect_Damage">
+        <damageDef>Cut</damageDef>
+        <amount>1</amount>
+        <instantKill>true</instantKill>
+        <radius>12</radius>
+        <affectCaster>false</affectCaster>
+        <affectAllies>false</affectAllies>
+        <affectEnemies>true</affectEnemies>
+        <affectNeutral>true</affectNeutral>
+        <flashScale>8</flashScale>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + HEAL ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_Heal</defName>
+    <label>Heal</label>
+    <description>Closes cuts, bruises, gunshot wounds and similar injuries, up to a limit. It cannot regrow lost limbs or remove scars.</description>
+    <tier>6</tier>
+    <mpCost>320</mpCost>
+    <damageModifier>1</damageModifier>
+    <castType>Target</castType>
+    <targetKind>Pawn</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Heal">
+        <amount>30</amount>
+        <regrowParts>false</regrowParts>
+        <healPermanent>false</healPermanent>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + HEAL (resurrection; corpse precondition) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_RaiseDead</defName>
+    <label>Raise Dead</label>
+    <description>Returns a fresh corpse to life, barely. It restores only what is needed to live (a lost head, for example, but not a lost foot or old scars). The revived has severe blood loss, stays unconscious for a while, and bleeds out in about six hours unless treated or healed. Corpses that have started to rot cannot be raised.</description>
+    <tier>5</tier>
+    <mpCost>240</mpCost>
+    <damageModifier>1</damageModifier>
+    <castType>Target</castType>
+    <targetKind>Corpse</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Heal">
+        <resurrect>true</resurrect>
+        <requireFreshCorpse>true</requireFreshCorpse>
+        <reviveHoursToDeath>6</reviveHoursToDeath>
+        <reviveBloodLoss>0.6</reviveBloodLoss>
+        <reviveUnconsciousTicks>3000</reviveUnconsciousTicks>
+        <reviveRestoreLevel>0</reviveRestoreLevel>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + SUMMON (being) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_SummonMonster3</defName>
+    <label>Summon Monster (3rd tier)</label>
+    <description>Calls a bear to fight for the caster. It appears exactly on the chosen tile (which must be empty) and vanishes after a few hours.</description>
+    <tier>3</tier>
+    <mpCost>60</mpCost>
+    <castType>Target</castType>
+    <targetKind>Cell</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Summon">
+        <summonType>Being</summonType>
+        <pawnKind>Bear_Grizzly</pawnKind>
+        <count>1</count>
+        <lifetimeTicks>7500</lifetimeTicks>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + CREATION ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_WallOfStone</defName>
+    <label>Wall of Stone</label>
+    <description>Raises a wall of granite. Click where it starts and drag to choose its direction and length (up to 7 tiles); a plain click makes a 5-tile wall across your line of sight. The wall stops at anything in the way.</description>
+    <tier>3</tier>
+    <mpCost>40</mpCost>
+    <castType>Target</castType>
+    <targetKind>Line</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Creation">
+        <thingDef>Wall</thingDef>
+        <stuffDef>BlocksGranite</stuffDef>
+        <shape>Line</shape>
+        <halfLength>2</halfLength>
+        <maxLength>7</maxLength>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + SUMMON (self / teleport) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_Teleportation</defName>
+    <label>Teleportation</label>
+    <description>The caster appears at the chosen location.</description>
+    <tier>5</tier>
+    <mpCost>160</mpCost>
+    <castType>Target</castType>
+    <targetKind>Cell</targetKind>
+    <range>50</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Summon">
+        <summonType>Self</summonType>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + STATUS (buff) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_Haste</defName>
+    <label>Haste</label>
+    <description>Greatly increases the target's movement and work speed for a short time.</description>
+    <tier>3</tier>
+    <mpCost>40</mpCost>
+    <castType>Target</castType>
+    <targetKind>Pawn</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Status">
+        <hediffDef>OM_Haste</hediffDef>
+        <durationTicks>1500</durationTicks>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + STATUS (debuff) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_Paralysis</defName>
+    <label>Paralysis</label>
+    <description>The target cannot move or act for ten seconds.</description>
+    <tier>3</tier>
+    <mpCost>40</mpCost>
+    <castType>Target</castType>
+    <targetKind>Pawn</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Status">
+        <hediffDef>OM_Paralysis</hediffDef>
+        <durationTicks>600</durationTicks>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET + STATUS (control) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_CharmPerson</defName>
+    <label>Charm Person</label>
+    <description>The target sees the caster as a best friend and fights on their side for a couple of hours.</description>
+    <tier>2</tier>
+    <mpCost>20</mpCost>
+    <castType>Target</castType>
+    <targetKind>Pawn</targetKind>
+    <range>25</range>
+    <effects>
+      <li Class="OverlordMagic.Effect_Status">
+        <hediffDef>OM_Charm</hediffDef>
+        <durationTicks>5000</durationTicks>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+  <!-- ===================== TARGET (caster-centered, map-wide) + STATUS (debuff on everyone else) ===================== -->
+  <OverlordMagic.SpellDef>
+    <defName>OM_TimeStop</defName>
+    <label>Time Stop</label>
+    <description>Stops time for ten seconds. Everyone else on the map is frozen: they cannot act, and projectiles and fire stand still. The caster can walk and cast, but spells cast during the stop only take effect when time resumes.</description>
+    <tier>10</tier>
+    <mpCost>7680</mpCost>
+    <castType>Target</castType>
+    <targetKind>Self</targetKind>
+    <effects>
+      <li Class="OverlordMagic.Effect_TimeStop">
+        <hediffDef>OM_TimeStop</hediffDef>
+        <durationTicks>600</durationTicks>
+        <radius>999</radius>
+        <affectCaster>false</affectCaster>
+        <affectAllies>true</affectAllies>
+        <affectEnemies>true</affectEnemies>
+        <affectNeutral>true</affectNeutral>
+      </li>
+    </effects>
+  </OverlordMagic.SpellDef>
+
+</Defs>

@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Build instructions:
+      1. Set RimWorldDir below (or pass /p:RimWorldDir="C:\...\RimWorld").
+      2. dotnet build -c Release
+    The DLL is written to ../1.6/Assemblies/OverlordMagic.dll.
+    Needs: the vanilla game, Unity, and Harmony (NuGet package Lib.Harmony, restored on first build). No DLC assemblies.
+  -->
+
+  <PropertyGroup>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\RimWorld</RimWorldDir>
+    <ManagedDir>$(RimWorldDir)\RimWorldWin64_Data\Managed</ManagedDir>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>OverlordMagic</AssemblyName>
+    <RootNamespace>OverlordMagic</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <OutputPath>..\1.6\Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(ManagedDir)\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(ManagedDir)\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Harmony, for the Time Stop and Charm patches. Compile-time only: at runtime the game uses the
+         "Harmony" mod (brrainz.harmony), which must be installed and loaded before this mod. -->
+    <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+</Project>
